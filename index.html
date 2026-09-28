@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Federico Fracchia: AI Automation Engineer. Automatización con IA, APIs, n8n y soporte técnico.">
+  <title>Federico Fracchia | AI Automation</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <header class="barra">
+    <a class="logo" href="#inicio">FF</a>
+    <nav>
+      <a href="#proyectos"><span data-lang="es">Proyectos</span><span data-lang="en">Projects</span></a>
+      <a href="#experiencia"><span data-lang="es">Experiencia</span><span data-lang="en">Experience</span></a>
+      <a href="#contacto"><span data-lang="es">Contacto</span><span data-lang="en">Contact</span></a>
+      <button id="cambiar-idioma" type="button" aria-label="Cambiar idioma / Switch language">EN</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="inicio" class="inicio">
+      <p class="etiqueta">Rosario, Argentina · Remote</p>
+      <h1>Federico Fracchia</h1>
+      <h2>AI Automation Engineer</h2>
+      <p data-lang="es">
+        Construyo automatizaciones con IA que resuelven problemas reales de soporte y operaciones:
+        clasificación de tickets, integraciones con APIs y flujos en n8n, cuidando los datos personales.
+        Vengo de 10 años de soporte técnico y de desarrollo web freelance.
+      </p>
+      <p data-lang="en">
+        I build AI automations that solve real support and operations problems:
+        ticket triage, API integrations and n8n workflows, with personal data handled carefully.
+        I bring 10 years of hands-on technical support and freelance web development.
+      </p>
+      <div class="acciones">
+        <a class="boton" href="#proyectos"><span data-lang="es">Ver proyectos</span><span data-lang="en">See projects</span></a>
+        <a class="boton secundario" href="https://github.com/Fedderico">GitHub</a>
+      </div>
+    </section>
+
+    <section id="proyectos">
+      <h3><span data-lang="es">Proyectos</span><span data-lang="en">Projects</span></h3>
+      <div class="tarjetas">
+        <article class="tarjeta">
+          <p class="estado"><span data-lang="es">En construcción</span><span data-lang="en">In progress</span></p>
+          <h4><span data-lang="es">Asistente de tickets IT</span><span data-lang="en">IT ticket assistant</span></h4>
+          <p data-lang="es">Clasifica tickets de soporte con Claude, anonimiza datos personales antes de enviarlos a la IA y responde usando una base de conocimiento (RAG).</p>
+          <p data-lang="en">Triages support tickets with Claude, strips personal data before it reaches the model, and answers using a knowledge base (RAG).</p>
+          <p class="stack">Claude API · Python · FastAPI · n8n · Backblaze B2</p>
+          <a href="https://github.com/Fedderico/asistente-tickets"><span data-lang="es">Ver repo</span><span data-lang="en">View repo</span> →</a>
+        </article>
+        <article class="tarjeta">
+          <p class="estado"><span data-lang="es">Próximamente</span><span data-lang="en">Coming soon</span></p>
+          <h4><span data-lang="es">Servidor MCP para Odoo</span><span data-lang="en">MCP server for Odoo</span></h4>
+          <p data-lang="es">Permite que un asistente de IA consulte y opere un ERP Odoo mediante Model Context Protocol, con tests y sin credenciales en el código.</p>
+          <p data-lang="en">Lets an AI assistant query and operate an Odoo ERP through the Model Context Protocol, with tests and no credentials in code.</p>
+          <p class="stack">MCP · Python · Odoo XML-RPC</p>
+        </article>
+        <article class="tarjeta">
+          <p class="estado"><span data-lang="es">Online</span><span data-lang="en">Live</span></p>
+          <h4><span data-lang="es">Este portfolio</span><span data-lang="en">This portfolio</span></h4>
+          <p data-lang="es">Sitio estático con CI/CD: cada push valida el HTML y los enlaces, y si todo pasa se publica solo en GitHub Pages.</p>
+          <p data-lang="en">Static site with CI/CD: every push validates HTML and links, and deploys to GitHub Pages only if checks pass.</p>
+          <p class="stack">GitHub Actions · GitHub Pages</p>
+          <a href="https://github.com/Fedderico/fedderico.github.io"><span data-lang="es">Ver repo</span><span data-lang="en">View repo</span> →</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="experiencia">
+      <h3><span data-lang="es">Experiencia</span><span data-lang="en">Experience</span></h3>
+      <ul class="linea">
+        <li>
+          <p class="fecha">2023 – <span data-lang="es">hoy</span><span data-lang="en">present</span></p>
+          <h4><span data-lang="es">Cofundador y desarrollador</span><span data-lang="en">Co-founder &amp; developer</span> · KyzenTech</h4>
+          <p data-lang="es">Diseño y desarrollo desde cero de una app de menú digital para comercios.</p>
+          <p data-lang="en">Designed and built a digital menu app for restaurants from scratch.</p>
+        </li>
+        <li>
+          <p class="fecha">2021 – <span data-lang="es">hoy</span><span data-lang="en">present</span></p>
+          <h4><span data-lang="es">Desarrollador web freelance</span><span data-lang="en">Freelance web developer</span></h4>
+          <p data-lang="es">Sitios responsivos, e-commerce y portfolios con HTML, CSS y React.</p>
+          <p data-lang="en">Responsive sites, e-commerce and portfolios with HTML, CSS and React.</p>
+        </li>
+        <li>
+          <p class="fecha">2010 – 2020</p>
+          <h4><span data-lang="es">Soporte técnico</span><span data-lang="en">Technical support</span> · Frada</h4>
+          <p data-lang="es">Diagnóstico y reparación de hardware, instalación y actualización de software. Diez años resolviendo tickets reales.</p>
+          <p data-lang="en">Hardware diagnosis and repair, software installs and upgrades. Ten years of solving real support tickets.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section id="contacto">
+      <h3><span data-lang="es">Contacto</span><span data-lang="en">Contact</span></h3>
+      <p>
+        <a href="mailto:fedde.fracchia@gmail.com">fedde.fracchia@gmail.com</a> ·
+        <a href="https://github.com/Fedderico">github.com/Fedderico</a>
+      </p>
+      <p data-lang="es">Español nativo · Inglés avanzado · Italiano intermedio</p>
+      <p data-lang="en">Spanish (native) · English (advanced) · Italian (intermediate)</p>
+    </section>
+  </main>
+
+  <footer>
+    <p><span data-lang="es">Publicado automáticamente con GitHub Actions.</span><span data-lang="en">Deployed automatically with GitHub Actions.</span></p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
