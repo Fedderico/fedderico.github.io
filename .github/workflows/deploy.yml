@@ -30,7 +30,8 @@ jobs:
 
       - name: Sin texto de relleno
         run: |
-          if grep -riE "lorem ipsum|TODO|a cambiar" --include="*.html" .; then
+          # TODO/FIXME solo en mayúsculas: "todo" es una palabra común en español
+          if grep -riE "lorem ipsum|a cambiar" --include="*.html" . || grep -rE "TODO|FIXME" --include="*.html" .; then
             echo "Hay texto de relleno en el sitio" && exit 1
           fi
 
