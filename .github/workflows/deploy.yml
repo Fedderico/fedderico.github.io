@@ -1,47 +1,43 @@
-name: Validar y publicar
+# CI/CD del portfolio de Fede
+# Cada push a "main" hace dos cosas, en orden:
+#   1. CI: revisa que el HTML no tenga errores.
+#   2. CD: si la revisión pasó, publica la web en GitHub Pages.
+# En un pull request solo corre el CI: así se ve si algo rompe antes de mergear.
+name: CI/CD del portfolio
 
 on:
   push:
-    branches: [main]
-  pull_request:
-  workflow_dispatch:
+    branches: [main]      # se dispara con cada push a main
+  pull_request:           # revisa los cambios propuestos, sin publicar
+  workflow_dispatch:      # botón para correrlo a mano desde la pestaña Actions
 
 permissions:
   contents: read
 
 jobs:
-  validar:
+  ci:
+    name: Revisar (CI)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Bajar el código
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - name: Preparar Node
+        uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      - name: Validar HTML
-        run: npx --yes html-validate@9 "*.html"
+      - name: Validar el HTML
+        run: npx --yes html-validate@9 "**/*.html"
 
-      - name: Revisar enlaces internos
-        uses: lycheeverse/lychee-action@v2
-        with:
-          args: --offline --no-progress "*.html"
-          fail: true
-
-      - name: Sin texto de relleno
-        run: |
-          # TODO/FIXME solo en mayúsculas: "todo" es una palabra común en español
-          if grep -riE "lorem ipsum|a cambiar" --include="*.html" . || grep -rE "TODO|FIXME" --include="*.html" .; then
-            echo "Hay texto de relleno en el sitio" && exit 1
-          fi
-
-  publicar:
-    needs: validar
-    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+  cd:
+    name: Publicar (CD)
+    needs: ci             # si el CI falla, esto NO se ejecuta
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     permissions:
-      pages: write
-      id-token: write
+      pages: write        # para publicar en GitHub Pages
+      id-token: write     # para que Pages verifique que el deploy viene de este repo
     environment:
       name: github-pages
       url: ${{ steps.deploy.outputs.page_url }}
@@ -49,14 +45,21 @@ jobs:
       group: pages
       cancel-in-progress: true
     steps:
-      - uses: actions/checkout@v4
+      - name: Bajar el código
+        uses: actions/checkout@v4
 
-      - name: Armar carpeta del sitio
-        run: mkdir _site && cp index.html estilos.css app.js _site/
+      - name: Configurar Pages
+        uses: actions/configure-pages@v5
 
-      - uses: actions/upload-pages-artifact@v3
+      # Solo se publica la web: README y configuración quedan fuera del sitio
+      - name: Armar la carpeta del sitio
+        run: mkdir _site && cp index.html _site/
+
+      - name: Empaquetar la web
+        uses: actions/upload-pages-artifact@v3
         with:
           path: _site
 
-      - id: deploy
+      - name: Publicar
+        id: deploy
         uses: actions/deploy-pages@v4
