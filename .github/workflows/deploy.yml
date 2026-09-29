@@ -53,7 +53,7 @@ jobs:
 
       # Solo se publica la web: README y configuración quedan fuera del sitio
       - name: Armar la carpeta del sitio
-        run: mkdir _site && cp index.html _site/
+        run: mkdir _site && cp index.html og.png _site/
 
       - name: Empaquetar la web
         uses: actions/upload-pages-artifact@v3
